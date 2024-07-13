@@ -18,7 +18,7 @@ namespace TinTuc.Infrastructure.MyDB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Article>()
-                .Property(a => a.Comments)
+                .Property(a => a.Content)
                 .HasColumnType("text");
 
             modelBuilder.Entity<Articledetail>()

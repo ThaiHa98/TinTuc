@@ -16,7 +16,6 @@ namespace TinTuc.Domain.Model
         public int AuthorId { get; set; }
         public int CategoryId { get; set; }
         public string Image { get; set; }
-        public List<Comment> Comments { get; set; }
 
         public Article(string name, string content, DateTime publishedDate, int authorId, int categoryId, string image)
         {
@@ -26,11 +25,6 @@ namespace TinTuc.Domain.Model
             AuthorId = authorId;
             CategoryId = categoryId;
             Image = image;
-        }
-
-        public void AddComment(Comment comment)
-        {
-            Comments.Add(comment);
         }
     }
 }

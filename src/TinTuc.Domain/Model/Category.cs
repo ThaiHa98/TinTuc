@@ -10,16 +10,10 @@ namespace TinTuc.Domain.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Article> Articles { get; private set; }
 
         public Category(string name)
         {
             Name = name;
-        }
-
-        public void AddArticle(Article article)
-        {
-            Articles.Add(article);
         }
     }
 }

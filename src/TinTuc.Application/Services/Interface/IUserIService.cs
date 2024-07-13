@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TinTuc.Domain.Model;
+using TinTuc.ModelDto.ModelDto;
 
 namespace TinTuc.Application.Services.Interface
 {
-    public interface IArticleService
+    public interface IUserIService
     {
-        IEnumerable<Article> GetAllArticles();
-        Article GetArticleById(int id);
-        void CreateArticle(Article article);
-        void UpdateArticle(Article article);
-        void DeleteArticle(int id);
+        IEnumerable<User> GetAllArticles();
+        User GetUserId(int id);
+        User CreateUser(UserDto userDto);
+        void UpdateUser(User user);
+        void DeleteUser(int id);
     }
 }

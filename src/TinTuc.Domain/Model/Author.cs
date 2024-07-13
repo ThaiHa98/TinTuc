@@ -10,17 +10,12 @@ namespace TinTuc.Domain.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
-        public List<Article> Articles { get; set; }
+        public string Email { get; set; } 
+
         public Author(string name, string email)
         {
             Name = name;
             Email = email;
-        }
-
-        public void AddArticle(Article article)
-        {
-            Articles.Add(article);
         }
     }
 }

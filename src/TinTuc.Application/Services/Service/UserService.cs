@@ -5,32 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using TinTuc.Application.Services.Interface;
 using TinTuc.Domain.Model;
+using TinTuc.ModelDto.ModelDto;
 
 namespace TinTuc.Application.Services.Service
 {
-    public class UserService : IArticleService
+    public class UserService : IUserIService
     {
-        public void CreateArticle(Article article)
+        public User CreateUser(UserDto userDto)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteArticle(int id)
+        public void DeleteUser(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Article> GetAllArticles()
+        public IEnumerable<User> GetAllArticles()
         {
             throw new NotImplementedException();
         }
 
-        public Article GetArticleById(int id)
+        public User GetUserId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateArticle(Article article)
+        public void UpdateUser(User user)
         {
             throw new NotImplementedException();
         }

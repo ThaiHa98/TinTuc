@@ -7,13 +7,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace TinTuc.Infrastructure.MyDB
 {
-    public class Project_Bao_Tri_DbContextFactory : IDesignTimeDbContextFactory<MyDBContext>
+    public class TinTucDbContextFactory : IDesignTimeDbContextFactory<MyDBContext>
     {
         public MyDBContext CreateDbContext(string[] args)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.jon")
+                .AddJsonFile("appsettings.json")
                 .Build();
             var connectionString = configuration.GetConnectionString("DB");
 
