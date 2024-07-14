@@ -7,9 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TinTuc.Domain\TinTuc.Domain.csproj" />
     <ProjectReference Include="..\TinTuc.Infrastructure\TinTuc.Infrastructure.csproj" />
     <ProjectReference Include="..\TinTuc.ModelDto\TinTuc.ModelDto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Image\" />
   </ItemGroup>
 
 </Project>

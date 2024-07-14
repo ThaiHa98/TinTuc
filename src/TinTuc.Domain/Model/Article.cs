@@ -17,11 +17,16 @@ namespace TinTuc.Domain.Model
         public int CategoryId { get; set; }
         public string Image { get; set; }
 
+        public Article()
+        {
+            PublishedDate = DateTime.Now;
+        }
+
         public Article(string name, string content, DateTime publishedDate, int authorId, int categoryId, string image)
         {
             Name = name;
             Content = content;
-            PublishedDate = publishedDate;
+            PublishedDate = DateTime.Now;
             AuthorId = authorId;
             CategoryId = categoryId;
             Image = image;
