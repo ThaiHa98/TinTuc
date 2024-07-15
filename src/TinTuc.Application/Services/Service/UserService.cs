@@ -34,7 +34,7 @@ namespace TinTuc.Application.Services.Service
                 Address = userDto.Address,
                 Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password)
             };
-            _repositoryInterface.add(user);
+            _repositoryInterface.Add(user);
             return user;
         }
 

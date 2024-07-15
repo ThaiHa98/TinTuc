@@ -28,7 +28,7 @@ namespace TinTuc.Application.Services.Service
                 {
                     throw new ArgumentNullException(nameof(author), "The data fields have not been fully entered");
                 }
-                _repositoryInterface.add(author);
+                _repositoryInterface.Add(author);
                 return author;
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace TinTuc.Application.Services.Service
                 {
                     throw new Exception("authorId not found");
                 }
-                _repositoryInterface.remove(id);
+                _repositoryInterface.Remove(id);
             }
             catch (Exception ex) 
             {
@@ -87,7 +87,7 @@ namespace TinTuc.Application.Services.Service
                 }
                 author1.Name = author.Name;
                 author1.Email = author.Email;
-                _repositoryInterface.update(author1);
+                _repositoryInterface.Update(author1);
             }
             catch (Exception ex) 
             {

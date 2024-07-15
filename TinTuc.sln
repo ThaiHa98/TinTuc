@@ -5,8 +5,6 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{733ADF3F-EF45-4CAC-8CB4-6AD6EBE0211C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinTuc.Interface", "src\TinTuc.Interface\TinTuc.Interface.csproj", "{06DE76A1-0E2D-4FDF-AEB9-95C9CEDF1313}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinTuc.Application", "src\TinTuc.Application\TinTuc.Application.csproj", "{F276F24B-73C8-4D09-93D6-CAF3D4CD95A8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinTuc.Domain", "src\TinTuc.Domain\TinTuc.Domain.csproj", "{0DB26FFF-4892-4E28-B70A-5C6D36031477}"
@@ -15,16 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinTuc.Infrastructure", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinTuc.ModelDto", "src\TinTuc.ModelDto\TinTuc.ModelDto.csproj", "{0E0224A0-E8C5-4245-8C88-763CCCB5A7D8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinTuc.API", "src\TinTuc.API\TinTuc.API.csproj", "{4B47B23D-458B-4C07-8021-D3D722550635}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06DE76A1-0E2D-4FDF-AEB9-95C9CEDF1313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06DE76A1-0E2D-4FDF-AEB9-95C9CEDF1313}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06DE76A1-0E2D-4FDF-AEB9-95C9CEDF1313}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06DE76A1-0E2D-4FDF-AEB9-95C9CEDF1313}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F276F24B-73C8-4D09-93D6-CAF3D4CD95A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F276F24B-73C8-4D09-93D6-CAF3D4CD95A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F276F24B-73C8-4D09-93D6-CAF3D4CD95A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,16 +37,20 @@ Global
 		{0E0224A0-E8C5-4245-8C88-763CCCB5A7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E0224A0-E8C5-4245-8C88-763CCCB5A7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E0224A0-E8C5-4245-8C88-763CCCB5A7D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B47B23D-458B-4C07-8021-D3D722550635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B47B23D-458B-4C07-8021-D3D722550635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B47B23D-458B-4C07-8021-D3D722550635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B47B23D-458B-4C07-8021-D3D722550635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{06DE76A1-0E2D-4FDF-AEB9-95C9CEDF1313} = {733ADF3F-EF45-4CAC-8CB4-6AD6EBE0211C}
 		{F276F24B-73C8-4D09-93D6-CAF3D4CD95A8} = {733ADF3F-EF45-4CAC-8CB4-6AD6EBE0211C}
 		{0DB26FFF-4892-4E28-B70A-5C6D36031477} = {733ADF3F-EF45-4CAC-8CB4-6AD6EBE0211C}
 		{7DA86313-AFE6-4029-B0F4-74E7423AEA09} = {733ADF3F-EF45-4CAC-8CB4-6AD6EBE0211C}
 		{0E0224A0-E8C5-4245-8C88-763CCCB5A7D8} = {733ADF3F-EF45-4CAC-8CB4-6AD6EBE0211C}
+		{4B47B23D-458B-4C07-8021-D3D722550635} = {733ADF3F-EF45-4CAC-8CB4-6AD6EBE0211C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A98ED7B6-605D-4B50-9144-A5FF0C8F6737}

@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace TinTuc.Interface.Common
+namespace TinTuc.API.Common
 {
     [Serializable]
     public class XBaseResult<T> where T : class

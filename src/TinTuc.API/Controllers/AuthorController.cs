@@ -1,40 +1,35 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using TinTuc.Application.Services.Interface;
 using TinTuc.Application.Services.Service;
 using TinTuc.Domain.Model;
-using TinTuc.Interface.Common;
-using TinTuc.ModelDto.ModelDto;
+using TinTuc.API.Common;
 
-namespace TinTuc.Interface.Controllers
+namespace TinTuc.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class AuthorController : ControllerBase
     {
-        private readonly CategoryService _categoryService;
-        public CategoryController(CategoryService categoryService) 
+        private readonly AuthorService _authorService;
+        public AuthorController(AuthorService authorService)
         {
-            _categoryService = categoryService;
+            _authorService = authorService;
         }
 
         [HttpPost("Create")]
-        public IActionResult CreateCategory([FromBody]Category category) 
+        public IActionResult CreateAuthor(Author author)
         {
             try
             {
-                if (category == null)
-                {
-                    throw new ArgumentNullException(nameof(category), "all data fields have not been filled in");
-                }
-                var createCategory = _categoryService.CreateCategory(category);
+                var create = _authorService.CreateAuthor(author);
                 return Ok(new XBaseResult
                 {
-                    data = createCategory,
+                    data = create,
                     success = true,
                     httpStatusCode = (int)HttpStatusCode.OK,
-                    message = "Create Category Successfully"
+                    message = "Create Author Successfully"
                 });
             }
             catch (Exception ex) 
@@ -49,15 +44,15 @@ namespace TinTuc.Interface.Controllers
         }
 
         [HttpPost("Delete")]
-        public IActionResult DeleteCategory(int id) 
+        public IActionResult DeleteAuthor(int id)
         {
             try
             {
                 if (id == null)
                 {
-                    throw new Exception("Id not filled in yet ");
+                    throw new Exception("Author id has not been entered");
                 }
-                _categoryService.DeleteCategory(id);
+                _authorService.DeleteAuthor(id);
                 return Ok(new XBaseResult
                 {
                     success = true,
@@ -76,41 +71,12 @@ namespace TinTuc.Interface.Controllers
             }
         }
 
-        [HttpGet("GetById")]
-        public IActionResult GetCategoryId(int id)
-        {
-            try
-            {
-                if (id == null)
-                {
-                    throw new Exception("Id not entered");
-                }
-                var query = _categoryService.GetById(id);
-                return Ok(new XBaseResult
-                {
-                    data = query,
-                    success = true,
-                    httpStatusCode = (int)HttpStatusCode.OK,
-                    message = "Category"
-                });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new XBaseResult
-                {
-                    success = false,
-                    httpStatusCode = (int)HttpStatusCode.BadRequest,
-                    message = ex.Message
-                });
-            }
-        }
-
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             try
             {
-                var author = _categoryService.GetCategory();
+                var author = _authorService.GetAllAuthor();
                 return Ok(new XBaseResult
                 {
                     data = author,
@@ -131,16 +97,45 @@ namespace TinTuc.Interface.Controllers
             }
         }
 
-        [HttpPut("Update")]
-        public IActionResult UpdateCategory([FromBody] Category category)
+        [HttpGet("GetById")]
+        public IActionResult GetAuthorId(int id) 
         {
             try
             {
-                if (category == null)
+                if (id == null)
+                {
+                    throw new Exception("Id not entered");
+                }
+                var query = _authorService.GetAuthorId(id);
+                return Ok(new XBaseResult
+                {
+                    data = query,
+                    success = true,
+                    httpStatusCode = (int)HttpStatusCode.OK,
+                    message = "Author"
+                });
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(new XBaseResult
+                {
+                    success = false,
+                    httpStatusCode = (int)HttpStatusCode.BadRequest,
+                    message = ex.Message
+                });
+            }
+        }
+
+        [HttpPut("Update")]
+        public IActionResult UpdateAuhor([FromBody]Author author)
+        {
+            try
+            {
+                if (author == null)
                 {
                     throw new Exception("Author data fields have not been fully entered");
                 }
-                _categoryService.UpdateCategory(category);
+                _authorService.UpdateAuthor(author);
                 return Ok(new XBaseResult
                 {
                     success = true,
@@ -152,7 +147,7 @@ namespace TinTuc.Interface.Controllers
             {
                 return BadRequest(new XBaseResult
                 {
-                    success = false,
+                    success= false,
                     httpStatusCode = (int)HttpStatusCode.BadRequest,
                     message = ex.Message
                 });

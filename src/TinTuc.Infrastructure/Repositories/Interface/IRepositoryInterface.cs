@@ -9,9 +9,10 @@ namespace TinTuc.Infrastructure.Repositories.Interface
     public interface IRepositoryInterface<T> where T : class
     {
         IEnumerable<T> GetAll();
+        Task<T> AddAsync(T entity);
         T GetById(int id);
-        void add(T entity);
-        void remove(int Id);
-        void update(T entity);
+        void Add(T entity);
+        void Remove(int id);
+        void Update(T entity);
     }
 }

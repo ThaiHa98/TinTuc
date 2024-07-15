@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using TinTuc.Application.Services.Service;
-using TinTuc.Interface.Common;
+using TinTuc.API.Common;
 using TinTuc.ModelDto.ModelDto;
 
-namespace TinTuc.Interface.Controllers
+namespace TinTuc.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

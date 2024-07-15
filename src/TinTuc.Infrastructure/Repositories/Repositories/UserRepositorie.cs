@@ -1,26 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TinTuc.Domain.Model;
+﻿using TinTuc.Domain.Model;
 using TinTuc.Infrastructure.MyDB;
 using TinTuc.Infrastructure.Repositories.Interface;
 
 namespace TinTuc.Infrastructure.Repositories.Repositories
 {
-    public class UserRepositorie : IRepositoryInterface<User>
+    public class UserRepository : IRepositoryInterface<User>
     {
         private readonly MyDBContext _dbContext;
-        public UserRepositorie(MyDBContext dbContext)
+
+        public UserRepository(MyDBContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public void add(User entity)
+        public void Add(User entity)
         {
             _dbContext.Users.Add(entity);
             _dbContext.SaveChanges();
+        }
+
+        public async Task<User> AddAsync(User entity)
+        {
+            _dbContext.Users.Add(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
         }
 
         public IEnumerable<User> GetAll()
@@ -30,12 +33,12 @@ namespace TinTuc.Infrastructure.Repositories.Repositories
 
         public User GetById(int id)
         {
-            return _dbContext.Users.Find(id);
+            return _dbContext.Users.FirstOrDefault(u => u.Id == id);
         }
 
-        public void remove(int Id)
+        public void Remove(int id)
         {
-            var user = _dbContext.Users.Find(Id);
+            var user = _dbContext.Users.FirstOrDefault(u => u.Id == id);
             if (user != null)
             {
                 _dbContext.Users.Remove(user);
@@ -43,9 +46,9 @@ namespace TinTuc.Infrastructure.Repositories.Repositories
             }
         }
 
-        public void update(User entity)
+        public void Update(User entity)
         {
-            _dbContext.Update(entity);
+            _dbContext.Users.Update(entity);
             _dbContext.SaveChanges();
         }
     }
