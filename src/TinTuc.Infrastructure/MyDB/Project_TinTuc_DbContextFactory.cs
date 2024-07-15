@@ -2,9 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-
-
-
 namespace TinTuc.Infrastructure.MyDB
 {
     public class TinTucDbContextFactory : IDesignTimeDbContextFactory<MyDBContext>
