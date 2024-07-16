@@ -9,7 +9,9 @@ using System.Reflection;
 using System.Text;
 using TinTuc.Application.Helper;
 using TinTuc.Domain.Model;
+using TinTuc.Domain.PagingRequest;
 using TinTuc.Infrastructure.MyDB;
+using TinTuc.Infrastructure.Repositories;
 using TinTuc.Infrastructure.Repositories.Interface;
 using TinTuc.Infrastructure.Repositories.Repositories;
 
@@ -24,7 +26,7 @@ builder.Services.AddDbContext<MyDBContext>(options =>
 
 builder.Services.AddTransient<Token>();
 builder.Services.AddTransient<IRepositoryInterface<User>, UserRepository>();
-builder.Services.AddTransient<IRepositoryInterface<Category>, CategoryRepositorie>();
+builder.Services.AddTransient<IRepositoryInterface<Category>, CategoryRepository>();
 builder.Services.AddHttpContextAccessor();
 foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
 {

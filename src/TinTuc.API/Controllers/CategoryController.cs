@@ -7,6 +7,8 @@ using MediatR;
 using TinTuc.Application.Features.CategoryCreates.CreatesCategory;
 using TinTuc.Application.Features.CategoryCreates.UpdateCategory;
 using TinTuc.Application.Features.CategoryCreates.DeleteCategory;
+using TinTuc.Application.Features.CategoryCreates.GetPagedAsync;
+using TinTuc.Domain.PagingRequest;
 
 namespace TinTuc.API.Controllers
 {
@@ -43,7 +45,7 @@ namespace TinTuc.API.Controllers
                     message = "Create Successfully"
                 });
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return BadRequest(new XBaseResult
                 {
@@ -56,7 +58,7 @@ namespace TinTuc.API.Controllers
         [HttpPost("Update")]
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryRequest request)
         {
-            if(request == null)
+            if (request == null)
             {
                 return BadRequest(new XBaseResult
                 {
@@ -76,7 +78,7 @@ namespace TinTuc.API.Controllers
                     message = "Update Category Successfully"
                 });
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return BadRequest(new XBaseResult
                 {
@@ -107,6 +109,31 @@ namespace TinTuc.API.Controllers
                     success = true,
                     httpStatusCode = (int)HttpStatusCode.OK,
                     message = "Delete Category Successfully"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new XBaseResult
+                {
+                    success = false,
+                    httpStatusCode = (int)HttpStatusCode.BadRequest,
+                    message = ex.Message
+                });
+            }
+        }
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAllCategory([FromQuery] PagingRequestBase request)
+        {
+            try
+            {
+                var getAll = await _mediator.Send(new GetAllCategoryQuery(request));
+                return Ok(new XBaseResult
+                {
+                    data = getAll,
+                    success = true,
+                    httpStatusCode = (int)HttpStatusCode.OK,
+                    totalCount = getAll.Count(),
+                    message = "Successfully"
                 });
             }
             catch (Exception ex)

@@ -29,5 +29,10 @@ namespace TinTuc.Infrastructure.MyDB
                 .Property(a => a.Content)
                 .HasColumnType("text");
         }
+
+        internal object Skip(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

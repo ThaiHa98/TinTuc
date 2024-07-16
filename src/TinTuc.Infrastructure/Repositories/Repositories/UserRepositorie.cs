@@ -1,4 +1,5 @@
 ﻿using TinTuc.Domain.Model;
+using TinTuc.Domain.PagingRequest;
 using TinTuc.Infrastructure.MyDB;
 using TinTuc.Infrastructure.Repositories.Interface;
 
@@ -34,6 +35,11 @@ namespace TinTuc.Infrastructure.Repositories.Repositories
         public User GetById(int id)
         {
             return _dbContext.Users.FirstOrDefault(u => u.Id == id);
+        }
+
+        public Task<IEnumerable<User>> GetPagedAsync(PagingRequestBase request)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task Remove(User entity)

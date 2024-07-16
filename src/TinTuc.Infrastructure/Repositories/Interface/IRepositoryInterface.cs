@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TinTuc.Domain.PagingRequest;
 
 namespace TinTuc.Infrastructure.Repositories.Interface
 {
@@ -14,5 +15,6 @@ namespace TinTuc.Infrastructure.Repositories.Interface
         void Add(T entity);
         Task Remove(T entity);
         void Update(T entity);
+        Task<IEnumerable<T>> GetPagedAsync(PagingRequestBase request);
     }
 }
