@@ -8,8 +8,6 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
 using TinTuc.Application.Helper;
-using TinTuc.Application.Services.Interface;
-using TinTuc.Application.Services.Service;
 using TinTuc.Domain.Model;
 using TinTuc.Infrastructure.MyDB;
 using TinTuc.Infrastructure.Repositories.Interface;
@@ -24,19 +22,9 @@ builder.Services.AddDbContext<MyDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DB"));
 });
 
-builder.Services.AddScoped<IRepositoryInterface<Author>, AuthorRepositorie>();
-builder.Services.AddScoped<IRepositoryInterface<Category>, CategoryRepositorie>();
-builder.Services.AddScoped<IRepositoryInterface<Article>, ArticleRepositorie>();
-builder.Services.AddScoped<IUserIService, UserService>();
-builder.Services.AddScoped<UserService>();
 builder.Services.AddTransient<Token>();
-builder.Services.AddScoped<IAuthorIService, AuthorService>();
-builder.Services.AddScoped<AuthorService>();
-builder.Services.AddScoped<ICategoryIService, CategoryService>();
-builder.Services.AddScoped<CategoryService>();
-builder.Services.AddScoped<IArticleIService, ArticleService>();
-builder.Services.AddScoped<ArticleService>();
 builder.Services.AddTransient<IRepositoryInterface<User>, UserRepository>();
+builder.Services.AddTransient<IRepositoryInterface<Category>, CategoryRepositorie>();
 builder.Services.AddHttpContextAccessor();
 foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
 {

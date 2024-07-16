@@ -36,14 +36,10 @@ namespace TinTuc.Infrastructure.Repositories.Repositories
             return _dbContext.Users.FirstOrDefault(u => u.Id == id);
         }
 
-        public void Remove(int id)
+        public async Task Remove(User entity)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.Id == id);
-            if (user != null)
-            {
-                _dbContext.Users.Remove(user);
-                _dbContext.SaveChanges();
-            }
+            _dbContext.Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
         public void Update(User entity)

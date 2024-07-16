@@ -76,7 +76,7 @@ namespace TinTuc.Application.Helper
             }
         }
 
-        //Phương thức lấy ClaimsPrincipal từ token
+        // Phương thức lấy ClaimsPrincipal từ token
         public ClaimsPrincipal GetPrincipalFromToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -96,7 +96,7 @@ namespace TinTuc.Application.Helper
                 var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var validatedToken);
                 return principal;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error when validating token", ex);
             }

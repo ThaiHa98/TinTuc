@@ -12,7 +12,7 @@ namespace TinTuc.Infrastructure.Repositories.Interface
         Task<T> AddAsync(T entity);
         T GetById(int id);
         void Add(T entity);
-        void Remove(int id);
+        Task Remove(T entity);
         void Update(T entity);
     }
 }
