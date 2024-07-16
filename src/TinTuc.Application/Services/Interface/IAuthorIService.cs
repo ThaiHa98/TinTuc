@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TinTuc.Domain.Model;
-using TinTuc.ModelDto.ModelDto;
 
 namespace TinTuc.Application.Services.Interface
 {

@@ -17,28 +17,32 @@ namespace TinTuc.Infrastructure.Repositories.Repositories
             _dbContext = dbContext;
         }
 
-        public void add(Articledetail entity)
-        {
-            _dbContext.Articledetails.Add(entity);
-            _dbContext.SaveChanges();
-        }
-
-        public IEnumerable<Articledetail> GetAll()
-        {
-            return _dbContext.Articledetails.ToArray();
-        }
-
-        public Articledetail GetById(int id)
-        {
-            return _dbContext.Articledetails.Find(id);
-        }
-
-        public void remove(int Id)
+        public void Add(Articledetail entity)
         {
             throw new NotImplementedException();
         }
 
-        public void update(Articledetail entity)
+        public Task<Articledetail> AddAsync(Articledetail entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Articledetail> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Articledetail GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Articledetail entity)
         {
             throw new NotImplementedException();
         }

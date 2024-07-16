@@ -5,7 +5,6 @@ using TinTuc.Application.Services.Interface;
 using TinTuc.Application.Services.Service;
 using TinTuc.Domain.Model;
 using TinTuc.API.Common;
-using TinTuc.ModelDto.ModelDto;
 
 namespace TinTuc.API.Controllers
 {

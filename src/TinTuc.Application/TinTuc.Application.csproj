@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\TinTuc.Domain\TinTuc.Domain.csproj" />
     <ProjectReference Include="..\TinTuc.Infrastructure\TinTuc.Infrastructure.csproj" />
-    <ProjectReference Include="..\TinTuc.ModelDto\TinTuc.ModelDto.csproj" />
   </ItemGroup>
 
   <ItemGroup>

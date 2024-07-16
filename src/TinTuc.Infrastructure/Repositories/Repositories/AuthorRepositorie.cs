@@ -17,36 +17,34 @@ namespace TinTuc.Infrastructure.Repositories.Repositories
             _dbContext = dbContext;
         }
 
-        public void add(Author entity)
+        public void Add(Author entity)
         {
-            _dbContext.Add(entity);
-            _dbContext.SaveChanges();
+            throw new NotImplementedException();
+        }
+
+        public Task<Author> AddAsync(Author entity)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Author> GetAll()
         {
-            return _dbContext.Authors.ToList();
+            throw new NotImplementedException();
         }
 
         public Author GetById(int id)
         {
-            return _dbContext.Authors.Find(id);
+            throw new NotImplementedException();
         }
 
-        public void remove(int Id)
+        public void Remove(int id)
         {
-            var author = _dbContext.Authors.Find(Id);
-            if (author != null)
-            {
-                _dbContext.Remove(author);
-                _dbContext.SaveChanges();
-            }
+            throw new NotImplementedException();
         }
 
-        public void update(Author entity)
+        public void Update(Author entity)
         {
-            _dbContext.Update(entity);
-            _dbContext.SaveChanges();
+            throw new NotImplementedException();
         }
     }
 }

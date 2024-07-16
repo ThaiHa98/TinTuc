@@ -5,9 +5,9 @@ using System.Security.Claims;
 using TinTuc.Application.Services;
 using TinTuc.Application.Services.Service;
 using TinTuc.API.Common;
-using TinTuc.ModelDto.ModelDto;
 using MediatR;
-using TinTuc.Application.Features.User.CreateUser;
+using TinTuc.Application.Features.UserCreates.CreateUsers;
+using TinTuc.Application.Features.UserCreates.Login;
 
 namespace TinTuc.API.Controllers
 {
@@ -25,20 +25,19 @@ namespace TinTuc.API.Controllers
         [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
         {
+            if (request == null)
+            {
+                return BadRequest(new XBaseResult
+                {
+                    success = false,
+                    httpStatusCode = (int)HttpStatusCode.BadRequest,
+                    message = "All data fields have not been filled in"
+                });
+            }
+
             try
             {
-                if (request == null)
-                {
-                    throw new ArgumentNullException(nameof(request), "All data fields have not been filled in");
-                }
-
-                var response = await _mediator.Send(new CreateUserRequest
-                {
-                    Name = request.Name,
-                    Email = request.Email,
-                    Password = request.Password,
-                    Address = request.Address
-                });
+                var response = await _mediator.Send(request);
 
                 return Ok(new XBaseResult
                 {
@@ -46,6 +45,41 @@ namespace TinTuc.API.Controllers
                     success = true,
                     httpStatusCode = (int)HttpStatusCode.OK,
                     message = "Create user successfully"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new XBaseResult
+                {
+                    success = false,
+                    httpStatusCode = (int)HttpStatusCode.BadRequest,
+                    message = ex.Message
+                });
+            }
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginUser([FromBody] LoginRequest request)
+        {
+            if(request == null)
+            {
+                return BadRequest(new XBaseResult
+                {
+                    success = false,
+                    httpStatusCode = (int)HttpStatusCode.BadRequest,
+                    message = "All data fields have not been filled in"
+                });
+            }
+            try
+            {
+                var response = await _mediator.Send(request);
+
+                return Ok(new XBaseResult
+                {
+                    data = response,
+                    success = true,
+                    httpStatusCode = (int)HttpStatusCode.OK,
+                    message = "Login successfully"
                 });
             }
             catch (Exception ex)

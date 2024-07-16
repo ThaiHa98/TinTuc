@@ -5,7 +5,6 @@ using TinTuc.Application.Services.Interface;
 using TinTuc.Domain.Model;
 using TinTuc.Infrastructure.MyDB;
 using TinTuc.Infrastructure.Repositories.Interface;
-using TinTuc.ModelDto.ModelDto;
 
 namespace TinTuc.Application.Services.Service
 {
@@ -21,7 +20,7 @@ namespace TinTuc.Application.Services.Service
             _repositoryInterface = repositoryInterface;
         }
 
-        public User CreateUser(UserDto userDto)
+        public User CreateUser(User userDto)
         {
             if(userDto == null)
             {
@@ -58,40 +57,40 @@ namespace TinTuc.Application.Services.Service
             return user;
         }
 
-        public string Login(LoginRequestDto loginRequestDto, HttpContext context)
-        {
-            try
-            {
-                var user = _dbContext.Users.FirstOrDefault(x => x.Email == loginRequestDto.Email);
-                if (user == null)
-                {
-                    throw new Exception("Email not found");
-                }
+        //public string Login(LoginRequestDto loginRequestDto, HttpContext context)
+        //{
+        //    try
+        //    {
+        //        var user = _dbContext.Users.FirstOrDefault(x => x.Email == loginRequestDto.Email);
+        //        if (user == null)
+        //        {
+        //            throw new Exception("Email not found");
+        //        }
 
-                if (!BCrypt.Net.BCrypt.Verify(loginRequestDto.Password, user.Password))
-                {
-                    throw new Exception("Incorrect password!");
-                }
+        //        if (!BCrypt.Net.BCrypt.Verify(loginRequestDto.Password, user.Password))
+        //        {
+        //            throw new Exception("Incorrect password!");
+        //        }
 
-                // Tạo token cho người dùng
-                string token = _token.CreateToken(user);
+        //        // Tạo token cho người dùng
+        //        string token = _token.CreateToken(user);
 
-                // Lưu token vào cookies
-                CookieOptions options = new CookieOptions
-                {
-                    HttpOnly = true,
-                    Secure = true,
-                    Expires = DateTime.UtcNow.AddMinutes(60) // Thời gian hết hạn của cookie
-                };
-                context.Response.Cookies.Append("authenticationToken", token, options);
+        //        // Lưu token vào cookies
+        //        CookieOptions options = new CookieOptions
+        //        {
+        //            HttpOnly = true,
+        //            Secure = true,
+        //            Expires = DateTime.UtcNow.AddMinutes(60) // Thời gian hết hạn của cookie
+        //        };
+        //        context.Response.Cookies.Append("authenticationToken", token, options);
 
-                return token; // Trả về token cho phương thức gọi
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("An error occurred while logging in");
-            }
-        }
+        //        return token; // Trả về token cho phương thức gọi
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("An error occurred while logging in");
+        //    }
+        //}
 
 
         public bool Logout(int Id, HttpContext context)

@@ -28,7 +28,7 @@ namespace TinTuc.Application.Services.Service
                 {
                     throw new ArgumentNullException(nameof(category), "The data fields have not been fully entered");
                 }
-                _repositoryInterface.add(category);
+                _repositoryInterface.AddAsync(category);
                 return category;
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace TinTuc.Application.Services.Service
                 {
                     throw new Exception("CategoryId not found");
                 }
-                _repositoryInterface.remove(id);
+                _repositoryInterface.Remove(id);
             }
             catch (Exception ex) 
             {
@@ -86,7 +86,7 @@ namespace TinTuc.Application.Services.Service
                     throw new Exception("AuthorId not found");
                 }
                 category1.Name = category.Name;
-                _repositoryInterface.update(category1);
+                _repositoryInterface.Update(category1);
             }
             catch (Exception ex)
             {

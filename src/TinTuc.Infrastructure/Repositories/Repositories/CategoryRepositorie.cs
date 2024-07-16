@@ -16,36 +16,35 @@ namespace TinTuc.Infrastructure.Repositories.Repositories
         {
             _dbContext = dbContext;
         }
-        public void add(Category entity)
+
+        public void Add(Category entity)
         {
-            _dbContext.Categories.Add(entity);
-            _dbContext.SaveChanges();
+            throw new NotImplementedException();
+        }
+
+        public Task<Category> AddAsync(Category entity)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Category> GetAll()
         {
-            return _dbContext.Categories.ToList();
+            throw new NotImplementedException();
         }
 
         public Category GetById(int id)
         {
-            return _dbContext.Categories.Find(id);
+            throw new NotImplementedException();
         }
 
-        public void remove(int Id)
+        public void Remove(int id)
         {
-            var categories = _dbContext.Categories.FirstOrDefault(x => x.Id == Id);
-            if (categories != null)
-            {
-                _dbContext.Remove(categories);
-                _dbContext.SaveChanges();
-            }
+            throw new NotImplementedException();
         }
 
-        public void update(Category entity)
+        public void Update(Category entity)
         {
-            _dbContext.Update(entity);
-            _dbContext.SaveChanges();
+            throw new NotImplementedException();
         }
     }
 }

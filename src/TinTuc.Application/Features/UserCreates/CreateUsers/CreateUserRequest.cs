@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using TinTuc.Domain.Model;
 
-namespace TinTuc.ModelDto.ModelDto
+namespace TinTuc.Application.Features.UserCreates.CreateUsers
 {
-    public class UserDto
+    public class CreateUserRequest : IRequest<User>
     {
         public string Name { get; set; }
         public string Email { get; set; }

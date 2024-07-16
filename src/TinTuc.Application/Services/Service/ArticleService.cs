@@ -11,7 +11,7 @@ using TinTuc.Application.Services.Interface;
 using TinTuc.Domain.Model;
 using TinTuc.Infrastructure.MyDB;
 using TinTuc.Infrastructure.Repositories.Interface;
-using TinTuc.ModelDto.ModelDto;
+
 
 namespace TinTuc.Application.Services.Service
 {
@@ -27,49 +27,49 @@ namespace TinTuc.Application.Services.Service
             _configuration = configuration;
         }
 
-        public Article CreateArticle(ArticleDto articleDto, IFormFile image)
-        {
-            try
-            {
-                if (articleDto == null)
-                {
-                    throw new ArgumentNullException(nameof(articleDto), "All data fields have not been filled in");
-                }
+        //public Article CreateArticle(ArticleDto articleDto, IFormFile image)
+        //{
+        //    try
+        //    {
+        //        if (articleDto == null)
+        //        {
+        //            throw new ArgumentNullException(nameof(articleDto), "All data fields have not been filled in");
+        //        }
 
-                var author = _dbContext.Authors.FirstOrDefault(x => x.Id == articleDto.AuthorId_Article);
-                if (author == null)
-                {
-                    throw new Exception("authorId not found");
-                }
+        //        var author = _dbContext.Authors.FirstOrDefault(x => x.Id == articleDto.AuthorId_Article);
+        //        if (author == null)
+        //        {
+        //            throw new Exception("authorId not found");
+        //        }
 
-                var category = _dbContext.Categories.FirstOrDefault(x => x.Id == articleDto.CategoryId_Article);
-                if (category == null)
-                {
-                    throw new Exception("CategoryId not found");
-                }
+        //        var category = _dbContext.Categories.FirstOrDefault(x => x.Id == articleDto.CategoryId_Article);
+        //        if (category == null)
+        //        {
+        //            throw new Exception("CategoryId not found");
+        //        }
 
-                Article article = new Article
-                {
-                    Name = articleDto.Name_Article,
-                    Content = articleDto.Content_Article,
-                    AuthorId = author.Id,
-                    CategoryId = category.Id
-                };
+        //        Article article = new Article
+        //        {
+        //            Name = articleDto.Name_Article,
+        //            Content = articleDto.Content_Article,
+        //            AuthorId = author.Id,
+        //            CategoryId = category.Id
+        //        };
 
-                if (image != null && image.Length > 0)
-                {
-                    string imagePath = SaveImage(image);
-                    article.Image = imagePath;
-                }
+        //        if (image != null && image.Length > 0)
+        //        {
+        //            string imagePath = SaveImage(image);
+        //            article.Image = imagePath;
+        //        }
 
-                _repositoryInterface.add(article);
-                return article;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("There is an error when creating an article", ex);
-            }
-        }
+        //        _repositoryInterface.AddAsync(article);
+        //        return article;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("There is an error when creating an article", ex);
+        //    }
+        //}
 
 
         public void DeleteArticle(int id)
@@ -87,10 +87,10 @@ namespace TinTuc.Application.Services.Service
             throw new NotImplementedException();
         }
 
-        public void UpdateArticle(ArticleDto articleDto, IFormFile image)
-        {
-            throw new NotImplementedException();
-        }
+        //public void UpdateArticle(ArticleDto articleDto, IFormFile image)
+        //{
+        //    throw new NotImplementedException();
+        //}
         private string SaveImage(IFormFile image)
         {
             try

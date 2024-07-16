@@ -2,7 +2,7 @@
 
 using TinTuc.Application.Responses;
 
-namespace TinTuc.Application.Features.User.CreateUser
+namespace TinTuc.Application.Features.UserCreates.CreateUsers
 {
     public class CreateUserValidator : AbstractValidator<CreateUserRequest>
     {

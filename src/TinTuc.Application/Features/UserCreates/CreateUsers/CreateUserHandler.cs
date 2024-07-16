@@ -1,19 +1,19 @@
 ﻿using MediatR;
+using TinTuc.Domain.Model;
 using TinTuc.Infrastructure.Repositories.Interface;
-using TinTuc.ModelDto.ModelDto;
 
-namespace TinTuc.Application.Features.User.CreateUser
+namespace TinTuc.Application.Features.UserCreates.CreateUsers
 {
-    public class CreateUserHandler : IRequestHandler<CreateUserRequest, GetUserResponse>
+    public class CreateUserHandler : IRequestHandler<CreateUserRequest, User>
     {
-        private readonly IRepositoryInterface<UserDto> _userRepository;
+        private readonly IRepositoryInterface<User> _userRepository;
 
-        public CreateUserHandler(IRepositoryInterface<UserDto> userRepository)
+        public CreateUserHandler(IRepositoryInterface<User> userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public async Task<GetUserResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
+        public async Task<User> Handle(CreateUserRequest request, CancellationToken cancellationToken)
         {
             try
             {
@@ -22,7 +22,7 @@ namespace TinTuc.Application.Features.User.CreateUser
                     throw new Exception("The request has not been filled in with enough data");
                 }
 
-                var user = new UserDto
+                var user = new User
                 {
                     Name = request.Name,
                     Email = request.Email,
@@ -32,7 +32,7 @@ namespace TinTuc.Application.Features.User.CreateUser
 
                 var savedUser = await _userRepository.AddAsync(user);
 
-                var response = new GetUserResponse
+                var response = new User
                 {
                     Name = savedUser.Name,
                     Email = savedUser.Email,

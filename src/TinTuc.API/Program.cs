@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 using System.Text;
 using TinTuc.Application.Helper;
 using TinTuc.Application.Services.Interface;
@@ -22,19 +24,24 @@ builder.Services.AddDbContext<MyDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DB"));
 });
 
-builder.Services.AddScoped<IRepositoryInterface<User>, UserRepositorie>();
 builder.Services.AddScoped<IRepositoryInterface<Author>, AuthorRepositorie>();
 builder.Services.AddScoped<IRepositoryInterface<Category>, CategoryRepositorie>();
 builder.Services.AddScoped<IRepositoryInterface<Article>, ArticleRepositorie>();
 builder.Services.AddScoped<IUserIService, UserService>();
 builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<Token>();
+builder.Services.AddTransient<Token>();
 builder.Services.AddScoped<IAuthorIService, AuthorService>();
 builder.Services.AddScoped<AuthorService>();
 builder.Services.AddScoped<ICategoryIService, CategoryService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<IArticleIService, ArticleService>();
 builder.Services.AddScoped<ArticleService>();
+builder.Services.AddTransient<IRepositoryInterface<User>, UserRepository>();
+builder.Services.AddHttpContextAccessor();
+foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+{
+    builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
+}
 
 
 builder.Services.AddControllers();
